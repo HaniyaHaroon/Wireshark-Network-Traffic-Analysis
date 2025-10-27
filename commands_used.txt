@@ -1,0 +1,38 @@
+# Commands Used and Their Meaning
+
+sudo apt update
+# Updates the package list to get the latest available versions.
+
+sudo apt install -y wireshark
+# Installs Wireshark if not already installed.
+
+sudo dpkg-reconfigure wireshark-common
+# Configures Wireshark permissions to allow non-root users to capture packets.
+
+sudo usermod -aG wireshark $USER
+# Adds the current user to the Wireshark group for capture privileges.
+
+newgrp wireshark
+# Applies group membership immediately without logging out.
+
+getcap /usr/bin/dumpcap
+# Verifies that dumpcap has the correct capabilities for capturing packets.
+
+tshark -D
+# Lists all available network interfaces visible to Wireshark.
+
+sudo ip link set eth0 up
+# Ensures the eth0 interface is active for capturing.
+
+wireshark &
+# Launches Wireshark in the background with GUI.
+
+ping 8.8.8.8
+# Generates ICMP packets to test connectivity and create capture data.
+
+# Inside Wireshark:
+# - Selected eth0 interface
+# - Started capture
+# - Browsed websites (google, amazon, youtube)
+# - Applied filters (dns, tcp, http, icmp)
+# - Stopped capture and saved file as networkCapture.pcap
